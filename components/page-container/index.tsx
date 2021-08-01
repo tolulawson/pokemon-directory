@@ -11,7 +11,7 @@ interface PageContainerProps {
 
 export default function PageContainer({ title, children }: PageContainerProps) {
   return (
-    <div className='container max-w-2xl mx-auto'>
+    <div className='container max-w-3xl mx-auto'>
       <Head>
         <title>
           Pokémon Directory -

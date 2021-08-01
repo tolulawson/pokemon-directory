@@ -1,12 +1,13 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
+// import getPokemonDetails, { PokemonDetails } from '../../services/getPokemonDetails';
+import getPokemonSummaryList, { PokemonSummaryList } from '../../services/getPokemonSummaryList';
 
-type Data = {
-  name: string
-}
-
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  // res: NextApiResponse<PokemonDetails>,
+  res: NextApiResponse<PokemonSummaryList>,
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  // const pokemon = await getPokemonDetails({ id: 200 });
+  const pokemon = await getPokemonSummaryList(20);
+  res.status(200).json(pokemon);
 }
