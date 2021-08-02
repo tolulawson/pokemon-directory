@@ -1,8 +1,12 @@
 import 'tailwindcss/tailwind.css';
-import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
+import { PokemonContextProvider } from '../context/pokemonContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <PokemonContextProvider>
+      <Component {...pageProps} />
+    </PokemonContextProvider>
+  );
 }
 export default MyApp;

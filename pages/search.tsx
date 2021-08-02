@@ -1,26 +1,47 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-underscore-dangle */
+import React from 'react';
 import { GetServerSideProps } from 'next';
 import PageContainer from '../components/page-container';
 import PokemonCardList from '../components/pokemon-card-list';
-import getPokemonSummaryList, { PokemonSummaryList } from '../services/getPokemonSummaryList';
+import { PokemonSummary } from '../services/getPokemonListFromPage';
 import { getSearchResults } from './api/search';
-import getPokemonDetails from '../services/getPokemonDetails';
+import { usePokemonList } from '../context/pokemonContext';
 
-export default function Home({ result }: { pokemonList: PokemonSummaryList }) {
+export default function Search(
+  { _pokemonList, query = '' }: { _pokemonList: PokemonSummary[], query?: string },
+) {
+  const { pokemonList, setPokemonList } = usePokemonList();
+  React.useEffect(() => {
+    setPokemonList(_pokemonList);
+  }, []);
   return (
     <>
-      <PageContainer title='Home' searchQuery='pikachu' />
-      {/* <PokemonCardList pokemonList={pokemonList} /> */}
+      <PageContainer title='Search' searchQuery={query}>
+        <PokemonCardList pokemonList={pokemonList} />
+      </PageContainer>
     </>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = context.query.q ? context.query.q.toString() : '';
-  const searchResults = await getSearchResults(query);
-  console.log(searchResults);
+
+  if (query.length < 1) {
+    return ({
+      props: {},
+    });
+  }
+
+  const _pokemonList = await getSearchResults(query);
   return {
     props: {
-      // pokemonList,
+      _pokemonList,
+      query,
     },
   };
+};
+
+Search.defaultProps = {
+  query: '',
 };

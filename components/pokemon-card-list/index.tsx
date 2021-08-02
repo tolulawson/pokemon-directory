@@ -1,11 +1,11 @@
 import PokemonCard from './summary-card';
-import { PokemonSummaryList, PokemonSummary } from '../../services/getPokemonSummaryList';
+import { PokemonSummary } from '../../services/getPokemonListFromPage';
 
-export default function PokemonCardList({ pokemonList }: { pokemonList: PokemonSummaryList }) {
+export default function PokemonCardList({ pokemonList = [] }: { pokemonList: PokemonSummary[] }) {
   return (
     <div>
       {
-        pokemonList.summaryList.map((listItem: PokemonSummary) => (
+        pokemonList.map((listItem) => (
           <PokemonCard
             key={listItem.name}
             name={listItem.name}

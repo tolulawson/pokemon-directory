@@ -2184,11 +2184,6 @@ minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
 
-minisearch@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/minisearch/-/minisearch-3.0.4.tgz#a676ca6c6c38230e26ef32eb6ff0c8067b4780eb"
-  integrity sha512-Pppssxzghr+hQ9HVNMUqNiIWaBrXXhwEZTeCUOK7GIWtZEHM+hTBlypaqP/uXnSrye9y4CNv6Ex9e7pH+wATxA==
-
 modern-normalize@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/modern-normalize/-/modern-normalize-1.1.0.tgz#da8e80140d9221426bd4f725c6e11283d34f90b7"

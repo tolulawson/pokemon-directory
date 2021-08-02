@@ -37,5 +37,5 @@ export default function PageContainer({ title, searchQuery, children }: PageCont
 
 PageContainer.defaultProps = {
   children: null,
-  searchQuery: null,
+  searchQuery: '',
 };

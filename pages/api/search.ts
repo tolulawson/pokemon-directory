@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import MiniSearch, { SearchResult } from 'minisearch';
-import { API_BASE } from '../../app.config';
+import { API_BASE, PAGE_LIMIT } from '../../app.config';
+import getPokemonListFromURLs, { PokemonSummary } from '../../services/getPokemonListFromURLs';
 
 const NodeCache = require('node-cache');
 
@@ -22,19 +22,20 @@ export async function getSearchResults(query: string) {
     allPokemon = pokemonCache.get('allPokemon');
   }
 
-  const pokemonSearch = new MiniSearch({
-    fields: ['name'],
-    storeFields: ['name'],
-  });
+  const searchResults = allPokemon.filter((pokemon) => pokemon.name.includes(query.toLowerCase()));
 
-  pokemonSearch.addAll(allPokemon.map((pokemon) => ({ ...pokemon, id: pokemon.name })));
+  const pokemonList = await getPokemonListFromURLs(
+    searchResults
+      .map((result) => result.url)
+      .slice(0, PAGE_LIMIT + 1),
+  );
 
-  return pokemonSearch.search(query, { fuzzy: 0.2 });
+  return pokemonList;
 }
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<SearchResult[]>,
+  res: NextApiResponse<PokemonSummary[]>,
 ) {
   const searchQuery: string = req.query.q.toString();
   const searchResults = await getSearchResults(searchQuery);

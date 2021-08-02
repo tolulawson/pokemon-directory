@@ -18,22 +18,15 @@ export interface PokemonSummaryList {
   currentPage: number,
 }
 
-interface FunctionProps {
-  page?: number;
-  urls?: string[];
-}
-
-export default async function getPokemonSummaryList(
-  { page, urls } : FunctionProps,
-): Promise<PokemonSummaryList> {
+export default async function getPokemonListFromPage(page: number): Promise<PokemonSummaryList> {
   const offset = PAGE_LIMIT * (page - 1);
-
   const pageList = await (await fetch(`${API_BASE}/pokemon/?limit=${PAGE_LIMIT}&offset=${offset}`)).json();
 
   const pageListDetailsPromises:any[] = [];
   pageList.results.forEach((result: {name: string, url: string}) => {
     pageListDetailsPromises.push(getPokemonDetails({ url: result.url }));
   });
+
   const pageListDetails = await Promise.all<PokemonDetails>(pageListDetailsPromises);
 
   const summaryList = pageListDetails.map((listItem: PokemonDetails) => ({
