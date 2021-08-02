@@ -6,10 +6,11 @@ import Logo from './logo';
 
 interface PageContainerProps {
   title: string;
+  searchQuery?: string;
   children?: React.ReactNode;
 }
 
-export default function PageContainer({ title, children }: PageContainerProps) {
+export default function PageContainer({ title, searchQuery, children }: PageContainerProps) {
   return (
     <div className='container max-w-3xl mx-auto'>
       <Head>
@@ -24,7 +25,7 @@ export default function PageContainer({ title, children }: PageContainerProps) {
 
       <header className='flex flex-nowrap flex-col md:flex-row items-center justify-center md:justify-between py-4'>
         <Logo className='mb-8 md:mb-0' />
-        <SearchBox />
+        <SearchBox searchQuery={searchQuery} />
       </header>
 
       <main>
@@ -36,4 +37,5 @@ export default function PageContainer({ title, children }: PageContainerProps) {
 
 PageContainer.defaultProps = {
   children: null,
+  searchQuery: null,
 };

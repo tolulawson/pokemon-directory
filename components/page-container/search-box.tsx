@@ -1,7 +1,10 @@
-export default function SearchBox() {
+interface SearchBoxProps {
+  searchQuery?: string;
+}
+export default function SearchBox({ searchQuery }: SearchBoxProps) {
   return (
-    <form className='relative shadow-md w-96 rounded-full'>
-      <input type='text' className='h-14 w-full pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none rounded-full' placeholder='Search Pokémon...' />
+    <form className='relative w-96 rounded-full border'>
+      <input type='text' className='h-14 w-full pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none rounded-full' placeholder='Search Pokémon names...' value={searchQuery} />
       <div className='absolute top-4 right-3'>
         {' '}
         <button className='btn btn-square btn-ghost' type='submit'>
@@ -14,3 +17,7 @@ export default function SearchBox() {
     </form>
   );
 }
+
+SearchBox.defaultProps = {
+  searchQuery: null,
+};

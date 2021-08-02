@@ -3,7 +3,7 @@ import getPokemonDetails, { PokemonDetails } from './getPokemonDetails';
 
 const fetch = require('node-fetch');
 
-interface PokemonSummary {
+export interface PokemonSummary {
   name: string;
   id: number;
   imageUrl: string;
@@ -18,8 +18,15 @@ export interface PokemonSummaryList {
   currentPage: number,
 }
 
-export default async function getPokemonSummaryList(page: number): Promise<PokemonSummaryList> {
-  const offset = PAGE_LIMIT * (page - 10);
+interface FunctionProps {
+  page?: number;
+  urls?: string[];
+}
+
+export default async function getPokemonSummaryList(
+  { page, urls } : FunctionProps,
+): Promise<PokemonSummaryList> {
+  const offset = PAGE_LIMIT * (page - 1);
 
   const pageList = await (await fetch(`${API_BASE}/pokemon/?limit=${PAGE_LIMIT}&offset=${offset}`)).json();
 
