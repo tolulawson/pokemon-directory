@@ -27,7 +27,7 @@ export default async function getPokemonDetails(
   return ({
     name: pokemon.name,
     id: pokemon.id,
-    imageUrl: pokemon.sprites.front_default,
+    imageUrl: pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default,
     species: pokemon.species.name,
     types: pokemon.types.map((type: any) => type.type.name),
     stats: pokemon.stats.map((stat: any) => ({

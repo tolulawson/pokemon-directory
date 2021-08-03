@@ -54,6 +54,7 @@ export default async function getPokemonListFromPageNumber(page: number): Promis
       nextPage,
       nextPages,
       previousPages,
+      totalPages: allPages.length,
     },
   });
 }
