@@ -86,7 +86,7 @@ export default function Pokemon({ pokemon }: { pokemon: PokemonDetails}) {
                           </p>
                         </div>
                         <div className={`w-full h-2 bg-${statColors[index] ?? 'gray'}-100 rounded-full mb-4`}>
-                          <div className={`h-full text-center text-xs text-white bg-${statColors[index] ?? 'gray'}-500 rounded-full`} style={{ width: `${stat.value}%` }} />
+                          <div className={`h-full text-center text-xs text-white bg-${statColors[index] ?? 'gray'}-500 rounded-full`} style={{ width: `${stat.value < 100 ? stat.value : 100}%` }} />
                         </div>
                       </div>
                     ))

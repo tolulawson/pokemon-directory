@@ -18,11 +18,15 @@ export default function Search(
   return (
     <>
       <PageContainer title='Search' searchQuery={query}>
-        <h3 className='text-center text-xl font-medium'>
-          {query}
-          {' '}
-          <span className='font-light text-sm text-gray-400'>- Pokémon Directory search</span>
-        </h3>
+        {
+          query && (
+            <h3 className='text-center text-xl font-medium'>
+              {query}
+              {' '}
+              <span className='font-light text-sm text-gray-400'>- Pokémon Directory search</span>
+            </h3>
+          )
+        }
         <PokemonCardList pokemonList={pokemonList} />
       </PageContainer>
     </>

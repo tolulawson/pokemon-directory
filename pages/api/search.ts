@@ -29,7 +29,7 @@ export async function getSearchResults(query: string) {
   } else {
     searchResults = allPokemon;
   }
-  searchResults = searchResults.slice(0, PAGE_LIMIT + 1);
+  searchResults = searchResults.slice(0, PAGE_LIMIT);
 
   const pokemonList = await getPokemonListFromURLs(
     searchResults

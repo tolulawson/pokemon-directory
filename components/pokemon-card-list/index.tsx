@@ -18,10 +18,12 @@ export default function PokemonCardList({ pokemonList = [] }: { pokemonList: Pok
             />
           ))
           : (
-            <p>
-              It&apos;s lonely out here. Try a different search term or go back
+            <p className='text-gray-500 py-20 px-8 text-center'>
+              It&apos;s lonely out here.
+              <br />
+              Try a different search term or go back
               {' '}
-              <Link href='/'><a href='/'>home</a></Link>
+              <Link href='/'><a className='font-bold text-blue-500' href='/'>home</a></Link>
             </p>
           )
       }
