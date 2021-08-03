@@ -18,7 +18,7 @@ export default function PageContainer(
   }: PageContainerProps,
 ) {
   return (
-    <div className='container max-w-3xl mx-auto'>
+    <div className='container max-w-3xl mx-auto px-3'>
       <Head>
         <title>
           Pokémon Directory -
