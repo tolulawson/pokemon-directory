@@ -75,3 +75,5 @@ $ yarn run start
   - **Search across multiple fields**: Presently, the application only searches within the name field for matching Pokémon. Other fields, including types, moves, species, etc, should be included in search suggestions and results.
   
   - **Categories**: Pokémon should be able to be viewed by properties such as types, moves, species, etc. These properties on each individual Pokémon should be clickable in order to see other Pokémon with similar properties.
+  
+  - **Related Pokémon**: Related Pokémon (as determined by their species value) should be listed on an individual Pokémon's page.
