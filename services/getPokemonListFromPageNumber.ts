@@ -1,6 +1,10 @@
 /* eslint-disable max-len */
-import { API_BASE, PAGE_LIMIT } from '../app.config';
+import {
+  API_BASE, PAGE_LIMIT, PAGINATION_NEXT_PAGES, PAGINATION_PREVIOUS_PAGES,
+} from '../app.config';
+import getPaginationPaths from './getPaginationPaths';
 import getPokemonDetails, { PokemonDetails } from './getPokemonDetails';
+import { PaginationProps } from '../components/pagination';
 
 const fetch = require('node-fetch');
 
@@ -12,10 +16,8 @@ export interface PokemonSummary {
 }
 
 export interface PokemonSummaryList {
-  summaryList: PokemonSummary[],
-  totalCount: number,
-  currentPageCount: number,
-  currentPage: number,
+  summaryList: PokemonSummary[];
+  pagination: PaginationProps;
 }
 
 export default async function getPokemonListFromPageNumber(page: number): Promise<PokemonSummaryList> {
@@ -36,10 +38,22 @@ export default async function getPokemonListFromPageNumber(page: number): Promis
     types: listItem.types,
   }));
 
+  const allPages = (await getPaginationPaths()).map((i) => Number(i));
+  const previousPage = allPages[page - 2] || null;
+  const nextPage = allPages[page] || null;
+  const nextPages = allPages
+    .slice(page - 1, page + PAGINATION_NEXT_PAGES);
+  const previousPages = allPages
+    .slice((page - PAGINATION_PREVIOUS_PAGES) < 0 ? 0 : page - 1 - PAGINATION_PREVIOUS_PAGES, page - 1);
+
   return ({
     summaryList,
-    totalCount: pageList.count,
-    currentPageCount: pageList.results.length,
-    currentPage: page,
+    pagination: {
+      currentPage: page,
+      previousPage,
+      nextPage,
+      nextPages,
+      previousPages,
+    },
   });
 }

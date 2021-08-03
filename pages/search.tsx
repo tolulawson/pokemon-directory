@@ -21,9 +21,7 @@ export default function Search(
         <h3 className='text-center text-xl font-medium'>
           {query}
           {' '}
-          -
-          {' '}
-          <span className='font-normal text-lg text-gray-400'>Pokémon Directory search</span>
+          <span className='font-light text-sm text-gray-400'>- Pokémon Directory search</span>
         </h3>
         <PokemonCardList pokemonList={pokemonList} />
       </PageContainer>

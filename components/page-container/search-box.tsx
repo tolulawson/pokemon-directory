@@ -9,6 +9,7 @@ interface SearchBoxProps {
 export default function SearchBox({ searchQuery }: SearchBoxProps) {
   const [query, setQuery] = React.useState(searchQuery);
   const [loading, setLoading] = React.useState(false);
+  const [initialRender, setInitialRender] = React.useState(true);
   const router = useRouter();
 
   const { setPokemonList } = usePokemonList();
@@ -27,7 +28,10 @@ export default function SearchBox({ searchQuery }: SearchBoxProps) {
     };
     if (query && query.length > 2) {
       getSearchResults();
+    } else if (!query && !initialRender) {
+      getSearchResults();
     }
+    setInitialRender(false);
   }, [query]);
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
