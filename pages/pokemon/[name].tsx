@@ -5,14 +5,6 @@ import getAllPokemonNames from '../../services/getAllPokemonNames';
 import PageContainer from '../../components/page-container';
 
 export default function Pokemon({ pokemon }: { pokemon: PokemonDetails}) {
-  const statColors = [
-    'red',
-    'yellow',
-    'green',
-    'blue',
-    'pink',
-    'indigo',
-  ];
   return (
     <PageContainer title={pokemon.name} showBackButton>
       <div>
@@ -75,7 +67,7 @@ export default function Pokemon({ pokemon }: { pokemon: PokemonDetails}) {
 
                 <div className='w-full'>
                   {
-                    pokemon.stats.map((stat, index) => (
+                    pokemon.stats.map((stat) => (
                       <div key={stat.name}>
                         <div className='flex items-center justify-between text-gray-400 text-sm'>
                           <p>
@@ -85,8 +77,8 @@ export default function Pokemon({ pokemon }: { pokemon: PokemonDetails}) {
                             {stat.value}
                           </p>
                         </div>
-                        <div className={`w-full h-2 bg-${statColors[index] ?? 'gray'}-100 rounded-full mb-4`}>
-                          <div className={`h-full text-center text-xs text-white bg-${statColors[index] ?? 'gray'}-500 rounded-full`} style={{ width: `${stat.value < 100 ? stat.value : 100}%` }} />
+                        <div className='w-full h-2 bg-gray-200 rounded-full mb-4'>
+                          <div className='h-full text-center text-xs text-white bg-blue-500 rounded-full' style={{ width: `${stat.value < 100 ? stat.value : 100}%` }} />
                         </div>
                       </div>
                     ))
