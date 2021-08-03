@@ -7,7 +7,7 @@ export interface PokemonDetails {
   name: string;
   id: number;
   imageUrl: string;
-  species: string[];
+  species: string;
   types: string[];
   stats: {[key: string]: number}[];
   weight: number;

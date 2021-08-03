@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { API_BASE, PAGE_LIMIT } from '../app.config';
 import getPokemonDetails, { PokemonDetails } from './getPokemonDetails';
 
@@ -5,9 +6,8 @@ const fetch = require('node-fetch');
 
 export interface PokemonSummary {
   name: string;
-  id: number;
   imageUrl: string;
-  species: string[];
+  species: string;
   types: string[];
 }
 
@@ -18,7 +18,7 @@ export interface PokemonSummaryList {
   currentPage: number,
 }
 
-export default async function getPokemonListFromPage(page: number): Promise<PokemonSummaryList> {
+export default async function getPokemonListFromPageNumber(page: number): Promise<PokemonSummaryList> {
   const offset = PAGE_LIMIT * (page - 1);
   const pageList = await (await fetch(`${API_BASE}/pokemon/?limit=${PAGE_LIMIT}&offset=${offset}`)).json();
 
@@ -31,7 +31,6 @@ export default async function getPokemonListFromPage(page: number): Promise<Poke
 
   const summaryList = pageListDetails.map((listItem: PokemonDetails) => ({
     name: listItem.name,
-    id: listItem.id,
     imageUrl: listItem.imageUrl,
     species: listItem.species,
     types: listItem.types,

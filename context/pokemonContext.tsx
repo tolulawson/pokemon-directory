@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React, { Dispatch } from 'react';
-import { PokemonSummary } from '../services/getPokemonListFromPage';
+import { PokemonSummary } from '../services/getPokemonListFromPageNumber';
 
 interface PokemonContextValue {
   pokemonList: PokemonSummary[];

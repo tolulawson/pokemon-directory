@@ -3,14 +3,20 @@ import React from 'react';
 import Head from 'next/head';
 import SearchBox from './search-box';
 import Logo from './logo';
+import BackButton from './back-button';
 
 interface PageContainerProps {
   title: string;
   searchQuery?: string;
+  showBackButton?: boolean;
   children?: React.ReactNode;
 }
 
-export default function PageContainer({ title, searchQuery, children }: PageContainerProps) {
+export default function PageContainer(
+  {
+    title, searchQuery, children, showBackButton,
+  }: PageContainerProps,
+) {
   return (
     <div className='container max-w-3xl mx-auto'>
       <Head>
@@ -25,7 +31,12 @@ export default function PageContainer({ title, searchQuery, children }: PageCont
 
       <header className='flex flex-nowrap flex-col md:flex-row items-center justify-center md:justify-between py-4'>
         <Logo className='mb-8 md:mb-0' />
-        <SearchBox searchQuery={searchQuery} />
+        {
+          !showBackButton && <SearchBox searchQuery={searchQuery} />
+        }
+        {
+          showBackButton && <BackButton />
+        }
       </header>
 
       <main>
@@ -38,4 +49,5 @@ export default function PageContainer({ title, searchQuery, children }: PageCont
 PageContainer.defaultProps = {
   children: null,
   searchQuery: '',
+  showBackButton: false,
 };

@@ -3,8 +3,9 @@ import React from 'react';
 import { GetStaticProps } from 'next';
 import PageContainer from '../components/page-container';
 import PokemonCardList from '../components/pokemon-card-list';
-import getPokemonListFromPage, { PokemonSummary } from '../services/getPokemonListFromPage';
+import getPokemonListFromPageNumber, { PokemonSummary } from '../services/getPokemonListFromPageNumber';
 import { usePokemonList } from '../context/pokemonContext';
+import Pagination from '../components/pokemon-card-list/pagination';
 
 export default function Home({ _pokemonList }: { _pokemonList: PokemonSummary[] }) {
   const { pokemonList, setPokemonList } = usePokemonList();
@@ -12,16 +13,18 @@ export default function Home({ _pokemonList }: { _pokemonList: PokemonSummary[] 
     setPokemonList(_pokemonList);
   }, []);
   return (
-    <>
-      <PageContainer title='Home'>
-        <PokemonCardList pokemonList={pokemonList} />
-      </PageContainer>
-    </>
+    <PageContainer title='Home'>
+      <PokemonCardList pokemonList={pokemonList} />
+
+      <div className='w-80 mx-auto pb-10'>
+        <Pagination />
+      </div>
+    </PageContainer>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { summaryList: _pokemonList } = await getPokemonListFromPage(1);
+  const { summaryList: _pokemonList } = await getPokemonListFromPageNumber(1);
   return {
     props: {
       _pokemonList,

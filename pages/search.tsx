@@ -4,7 +4,7 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import PageContainer from '../components/page-container';
 import PokemonCardList from '../components/pokemon-card-list';
-import { PokemonSummary } from '../services/getPokemonListFromPage';
+import { PokemonSummary } from '../services/getPokemonListFromPageNumber';
 import { getSearchResults } from './api/search';
 import { usePokemonList } from '../context/pokemonContext';
 
@@ -18,6 +18,13 @@ export default function Search(
   return (
     <>
       <PageContainer title='Search' searchQuery={query}>
+        <h3 className='text-center text-xl font-medium'>
+          {query}
+          {' '}
+          -
+          {' '}
+          <span className='font-normal text-lg text-gray-400'>Pokémon Directory search</span>
+        </h3>
         <PokemonCardList pokemonList={pokemonList} />
       </PageContainer>
     </>

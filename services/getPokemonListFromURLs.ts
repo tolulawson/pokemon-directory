@@ -2,9 +2,8 @@ import getPokemonDetails, { PokemonDetails } from './getPokemonDetails';
 
 export interface PokemonSummary {
   name: string;
-  id: number;
   imageUrl: string;
-  species: string[];
+  species: string;
   types: string[];
 }
 
@@ -18,7 +17,6 @@ export default async function getPokemonListFromURLs(urls: string[]): Promise<Po
 
   const summaryList = pageListDetails.map((listItem: PokemonDetails) => ({
     name: listItem.name,
-    id: listItem.id,
     imageUrl: listItem.imageUrl,
     species: listItem.species,
     types: listItem.types,

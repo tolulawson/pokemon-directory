@@ -5,53 +5,42 @@ import Image from 'next/image';
 interface PokemonCardProps {
   imageURL: string;
   name: string;
-  id: number;
   types: string[];
-  species: string[];
+  species: string;
 }
 
 export default function SummaryCard({
-  name, types, species, id, imageURL,
+  name, types, species, imageURL,
 }: PokemonCardProps) {
   return (
-    <Link href='/'>
-      <a href='/'>
-        <div className='max-w-xs'>
-          <div className='bg-white shadow-xl rounded-lg py-3'>
-            <div className='w-44 h-44 relative'>
-              <Image
-                src={imageURL}
-                alt='Pokemon Directory logo'
-                layout='fill'
-                objectFit='contain'
-              />
-            </div>
-            <div className='p-2'>
-              <h3 className='text-center text-xl text-gray-900 font-medium leading-8'>{name}</h3>
-              {/* <div className='text-center text-gray-400 text-xs font-semibold'>
-                  <p>Web Developer</p>
-                </div> */}
-              {/* <table className='text-xs my-3'>
-                  <tbody>
-                    <tr>
-                      <td className='px-2 py-2 text-gray-500 font-semibold'>Address</td>
-                      <td className='px-2 py-2'>Chatakpur-3, Dhangadhi Kailali</td>
-                    </tr>
-                    <tr>
-                      <td className='px-2 py-2 text-gray-500 font-semibold'>Phone</td>
-                      <td className='px-2 py-2'>+977 9955221114</td>
-                    </tr>
-                    <tr>
-                      <td className='px-2 py-2 text-gray-500 font-semibold'>Email</td>
-                      <td className='px-2 py-2'>john@exmaple.com</td>
-                    </tr>
-                  </tbody>
-                </table> */}
-
-              {/* <div className='text-center my-3'>
-                  <a className='text-xs text-indigo-500 italic hover:underline hover:text-indigo-600 font-medium' href='#'>View Profile</a>
-                </div> */}
-
+    <Link href={`/pokemon/${name}`}>
+      <a href={`/pokemon/${name}`}>
+        <div className='bg-white rounded-3xl py-2 w-64 md:w-56 flex flex-col justify-center shadow-md bg-gray-50 transform transition duration-500 hover:scale-105'>
+          <div className='w-44 h-44 relative mx-auto'>
+            <Image
+              src={imageURL}
+              alt='Pokemon Directory logo'
+              layout='fill'
+              objectFit='contain'
+            />
+          </div>
+          <div className='p-2 text-gray-700 py-4'>
+            <h3 className='text-center text-xl font-medium leading-8'>
+              {name}
+            </h3>
+            <div className='text-center text-xs w-full text-gray-500'>
+              <div>
+                <span className='font-medium'>Species: </span>
+                <span className='font-light'>{species}</span>
+              </div>
+              <div>
+                <span className='font-medium'>Types: </span>
+                <span className='font-light'>
+                  {
+                    (() => types.join(', '))()
+                  }
+                </span>
+              </div>
             </div>
           </div>
         </div>

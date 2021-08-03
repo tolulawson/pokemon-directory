@@ -22,12 +22,18 @@ export async function getSearchResults(query: string) {
     allPokemon = pokemonCache.get('allPokemon');
   }
 
-  const searchResults = allPokemon.filter((pokemon) => pokemon.name.includes(query.toLowerCase()));
+  let searchResults;
+
+  if (query) {
+    searchResults = allPokemon.filter((pokemon) => pokemon.name.includes(query.toLowerCase()));
+  } else {
+    searchResults = allPokemon;
+  }
+  searchResults = searchResults.slice(0, PAGE_LIMIT + 1);
 
   const pokemonList = await getPokemonListFromURLs(
     searchResults
-      .map((result) => result.url)
-      .slice(0, PAGE_LIMIT + 1),
+      .map((result) => result.url),
   );
 
   return pokemonList;
