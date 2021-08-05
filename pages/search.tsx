@@ -8,8 +8,12 @@ import { PokemonSummary } from '../services/getPokemonListFromPageNumber';
 import { getSearchResults } from './api/search';
 import { usePokemonList } from '../context/pokemonContext';
 
+interface SearchProps {
+  _pokemonList: PokemonSummary[];
+  query?: string;
+}
 export default function Search(
-  { _pokemonList, query = '' }: { _pokemonList: PokemonSummary[], query?: string },
+  { _pokemonList, query = '' }: SearchProps,
 ) {
   const { pokemonList, setPokemonList } = usePokemonList();
   React.useEffect(() => {

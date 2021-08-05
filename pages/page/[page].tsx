@@ -8,13 +8,18 @@ import { usePokemonList } from '../../context/pokemonContext';
 import Pagination, { PaginationProps } from '../../components/pagination';
 import getPaginationPaths from '../../services/getPaginationPaths';
 
+interface PageProps {
+  _pokemonList: PokemonSummary[];
+  pagination: PaginationProps;
+}
+
 export default function Page(
-  { _pokemonList, pagination }: { _pokemonList: PokemonSummary[], pagination: PaginationProps },
+  { _pokemonList, pagination }: PageProps,
 ) {
   const { pokemonList, setPokemonList } = usePokemonList();
   React.useEffect(() => {
     setPokemonList(_pokemonList);
-  }, []);
+  }, [_pokemonList]);
   return (
     <PageContainer title='Home'>
       <PokemonCardList pokemonList={pokemonList} />
