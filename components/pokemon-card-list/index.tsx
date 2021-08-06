@@ -15,6 +15,7 @@ export default function PokemonCardList({ pokemonList = [] }: { pokemonList: Pok
               types={listItem.types}
               species={listItem.species}
               imageURL={listItem.imageUrl}
+              placeholder={listItem.placeholder}
             />
           ))
           : (

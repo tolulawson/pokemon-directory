@@ -7,10 +7,11 @@ interface PokemonCardProps {
   name: string;
   types: string[];
   species: string;
+  placeholder: string;
 }
 
 export default function SummaryCard({
-  name, types, species, imageURL,
+  name, types, species, imageURL, placeholder,
 }: PokemonCardProps) {
   return (
     <Link href={`/pokemon/${name}`}>
@@ -22,6 +23,8 @@ export default function SummaryCard({
               alt='Pokemon Directory logo'
               layout='fill'
               objectFit='contain'
+              placeholder='blur'
+              blurDataURL={placeholder}
             />
           </div>
           <div className='p-2 text-gray-700 py-4'>

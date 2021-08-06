@@ -2,6 +2,7 @@
 import { API_BASE } from '../app.config';
 
 const fetch = require('node-fetch');
+const lqip = require('lqip');
 
 export interface PokemonDetails {
   name: string;
@@ -13,6 +14,7 @@ export interface PokemonDetails {
   weight: number;
   height: number;
   moves: string[];
+  placeholder: string;
 }
 
 export default async function getPokemonDetails(
@@ -24,6 +26,7 @@ export default async function getPokemonDetails(
   } else if (url) {
     pokemon = await (await fetch(url)).json();
   }
+  const placeholder = await lqip.base64(pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default);
   return ({
     name: pokemon.name,
     id: pokemon.id,
@@ -37,5 +40,6 @@ export default async function getPokemonDetails(
     weight: pokemon.weight,
     height: pokemon.height,
     moves: pokemon.moves.map((move: any) => move.move.name),
+    placeholder,
   });
 }

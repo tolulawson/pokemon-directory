@@ -5,6 +5,7 @@ export interface PokemonSummary {
   imageUrl: string;
   species: string;
   types: string[];
+  placeholder: string;
 }
 
 export default async function getPokemonListFromURLs(urls: string[]): Promise<PokemonSummary[]> {
@@ -20,6 +21,7 @@ export default async function getPokemonListFromURLs(urls: string[]): Promise<Po
     imageUrl: listItem.imageUrl,
     species: listItem.species,
     types: listItem.types,
+    placeholder: listItem.placeholder,
   }));
 
   return (summaryList);

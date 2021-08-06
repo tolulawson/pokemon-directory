@@ -13,6 +13,7 @@ export interface PokemonSummary {
   imageUrl: string;
   species: string;
   types: string[];
+  placeholder: string;
 }
 
 export interface PokemonSummaryList {
@@ -36,6 +37,7 @@ export default async function getPokemonListFromPageNumber(page: number): Promis
     imageUrl: listItem.imageUrl,
     species: listItem.species,
     types: listItem.types,
+    placeholder: listItem.placeholder,
   }));
 
   const allPages = (await getPaginationPaths()).map((i) => Number(i));
