@@ -10,6 +10,8 @@ A simple Pokémon directory application with browsing and search functionality, 
 
 https://staging-pokemon-challenge.vercel.app/
 
+## Deploy with Vercel
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftolulawson%2Fpokemon-challenge&project-name=pokemon-directory&repo-name=pokemon-directory&demo-title=Pokemon%20Directory&demo-description=A%20simple%20Pok%C3%A9mon%20directory%20application%20with%20browsing%20and%20search%20functionality%2C%20built%20with%20Typescript%2C%20Next.js%20and%20Tailwind%20CSS.)
 
 ## Development
