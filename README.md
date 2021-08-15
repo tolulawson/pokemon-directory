@@ -6,9 +6,9 @@ A simple Pokémon directory application with browsing and search functionality, 
   <img src='https://user-images.githubusercontent.com/55362043/128029005-2060398c-de52-454c-b93c-3c67c5251b5d.PNG' width='500px' />
 </p>
 
-## Preview
+## Live website
 
-https://staging-pokemon-challenge.vercel.app/
+https://pokemondirectory.vercel.app/
 
 ## Deploy with Vercel
 
