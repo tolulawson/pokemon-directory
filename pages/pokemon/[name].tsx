@@ -16,7 +16,7 @@ export default function Pokemon({ pokemon }: { pokemon: PokemonDetails}) {
             src={pokemon.imageUrl}
             alt='Pokemon Directory logo'
             layout='fill'
-            objectFit='contain'
+            style={{ objectFit: 'contain' }}
           />
         </div>
       </div>

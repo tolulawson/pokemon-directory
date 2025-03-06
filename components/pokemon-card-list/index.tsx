@@ -6,9 +6,8 @@ export default function PokemonCardList({ pokemonList = [] }: { pokemonList: Pok
   return (
     <div>
       <div className='flex flex-wrap gap-x-3 gap-y-12 md:gap-x-8 justify-center py-12'>
-        {
-        pokemonList.length > 0
-          ? pokemonList.map((listItem) => (
+        {pokemonList.length > 0 ? (
+          pokemonList.map((listItem) => (
             <PokemonCard
               key={listItem.name}
               name={listItem.name}
@@ -18,16 +17,17 @@ export default function PokemonCardList({ pokemonList = [] }: { pokemonList: Pok
               placeholder={listItem.placeholder}
             />
           ))
-          : (
-            <p className='text-gray-500 py-20 px-8 text-center'>
-              It&apos;s lonely out here.
-              <br />
-              Try a different search term or go back
-              {' '}
-              <Link href='/'><a className='font-bold text-blue-500' href='/'>home</a></Link>
-            </p>
-          )
-      }
+        ) : (
+          <p className='text-gray-500 py-20 px-8 text-center'>
+            It&apos;s lonely out here.
+            <br />
+            Try a different search term or go back
+            {' '}
+            <Link className='font-bold text-blue-500' href='/'>
+              home
+            </Link>
+          </p>
+        )}
       </div>
     </div>
   );

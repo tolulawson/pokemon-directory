@@ -10,14 +10,12 @@ export default function Logo({ className }: LogoProps) {
   return (
     <div className={`w-44 h-20 relative ${className}`}>
       <Link href='/'>
-        <a href='/'>
-          <Image
-            src={logo}
-            alt='Pokemon Directory logo'
-            layout='fill'
-            objectFit='contain'
-          />
-        </a>
+        <Image
+          src={logo}
+          alt='Pokemon Directory logo'
+          layout='fill'
+          style={{ objectFit: 'contain' }}
+        />
       </Link>
     </div>
   );
