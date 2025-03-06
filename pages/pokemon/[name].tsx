@@ -16,8 +16,13 @@ export default function Pokemon({ pokemon }: { pokemon: PokemonDetails}) {
           <h3 className='text-center text-2xl font-medium leading-8'>
             {pokemon.name}
           </h3>
-          <div className='w-52 h-52 relative mx-auto'>
-            <Image src={pokemon.imageUrl} alt='Pokemon Directory logo' fill sizes='100vw' />
+          <div className='w-52 h-52 relative mx-auto mb-4'>
+            <Image
+              src={pokemon.imageUrl ?? '/placeholder.jpg'}
+              alt={`${pokemon.name} image`}
+              fill
+              sizes='100vw'
+            />
           </div>
         </div>
         <div className='bg-white max-w-2xl shadow-lg overflow-hidden sm:rounded-lg mx-auto mb-20'>
