@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import { usePokemonList } from '../../context/pokemonContext';
 
 interface SearchBoxProps {
-  searchQuery?: string;
+  searchQuery: string | undefined;
 }
-export default function SearchBox({ searchQuery }: SearchBoxProps) {
+export default function SearchBox({ searchQuery = '' }: SearchBoxProps) {
   const [query, setQuery] = React.useState(searchQuery);
   const [loading, setLoading] = React.useState(false);
   const [initialRender, setInitialRender] = React.useState(true);
@@ -66,7 +66,3 @@ export default function SearchBox({ searchQuery }: SearchBoxProps) {
     </form>
   );
 }
-
-SearchBox.defaultProps = {
-  searchQuery: '',
-};

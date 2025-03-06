@@ -43,7 +43,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<PokemonSummary[]>,
 ) {
-  const searchQuery: string = req.query.q.toString();
+  const searchQuery: string = req.query.q?.toString() ?? '';
   const searchResults = await getSearchResults(searchQuery);
 
   res.status(200).json(searchResults);

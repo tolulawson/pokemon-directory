@@ -26,11 +26,12 @@ export default async function getPokemonDetails(
   } else if (url) {
     pokemon = await (await fetch(url)).json();
   }
-  const placeholder = await lqip.base64(pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default);
-  return ({
+  const placeholder = await lqip.base64(pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default).catch(() => '');
+
+  const pokemonDetails = {
     name: pokemon.name,
     id: pokemon.id,
-    imageUrl: pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default,
+    imageUrl: pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default || '/placeholder.jpg',
     species: pokemon.species.name,
     types: pokemon.types.map((type: any) => type.type.name),
     stats: pokemon.stats.map((stat: any) => ({
@@ -41,5 +42,7 @@ export default async function getPokemonDetails(
     height: pokemon.height,
     moves: pokemon.moves.map((move: any) => move.move.name),
     placeholder,
-  });
+  };
+
+  return pokemonDetails;
 }
