@@ -1,5 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import getPokemonDetails, { PokemonDetails } from '../../services/getPokemonDetails';
 import getAllPokemonNames from '../../services/getAllPokemonNames';
 import PageContainer from '../../components/page-container';
