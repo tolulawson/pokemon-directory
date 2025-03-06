@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import Link from 'next/link';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 
 interface PokemonCardProps {
   imageURL: string;
@@ -20,10 +20,10 @@ export default function SummaryCard({
           <Image
             src={imageURL}
             alt='Pokemon Directory logo'
-            layout='fill'
-            style={{ objectFit: 'contain' }}
             placeholder='blur'
             blurDataURL={placeholder}
+            fill
+            sizes='100vw'
           />
         </div>
         <div className='p-2 text-gray-700 py-4'>
